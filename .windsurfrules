@@ -1,0 +1,404 @@
+# Source: https://github.com/Adhamxon/opencode-ultimate-skills
+# Copyright (c) 2026 Adkhamkhon
+# Used under MIT License
+
+# =============================================================================
+# Windsurf IDE Rules — Comprehensive Development Guidelines
+# =============================================================================
+# This file configures Windsurf AI behavior for the entire project.
+# Rules apply to all files unless overridden by section-specific rules.
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# 1. PROJECT OVERVIEW
+# ---------------------------------------------------------------------------
+# Language: Project-specific (auto-detected)
+# Framework: Project-specific (auto-detected)
+# Package Manager: Project-specific (auto-detected)
+
+[project]
+name = "windsurf-skills"
+description = "Comprehensive rules configuration for Windsurf IDE"
+version = "1.0.0"
+
+# ---------------------------------------------------------------------------
+# 2. CODE STYLE & FORMATTING
+# ---------------------------------------------------------------------------
+[style]
+# General
+indent_style = "space"
+indent_size = 2
+max_line_length = 100
+end_of_line = "lf"
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Naming Conventions
+naming.classes = "PascalCase"
+naming.functions = "camelCase"
+naming.variables = "camelCase"
+naming.constants = "UPPER_SNAKE_CASE"
+naming.interfaces = "PascalCase"
+naming.types = "PascalCase"
+naming.enums = "PascalCase"
+naming.enum_members = "UPPER_SNAKE_CASE"
+naming.private_fields = "_camelCase"
+naming.booleans = "is_has_should_does_prefix"
+naming.files = "kebab-case"
+
+# Imports
+imports.group_by = ["builtin", "external", "internal"]
+imports.sort = "alphabetical"
+imports.newline_between_groups = true
+
+# JavaScript / TypeScript
+rules.javascript.quotes = "single"
+rules.javascript.semicolons = "always"
+rules.javascript.trailing_comma = "all"
+rules.javascript.arrow_parens = "always"
+rules.javascript.bracket_spacing = true
+rules.javascript.jsx_single_quote = false
+rules.typescript.no_any = "warn"
+rules.typescript.strict_null_checks = true
+rules.typescript.no_unused_vars = "error"
+rules.typescript.prefer_interfaces = true
+
+# Python
+rules.python.quotes = "double"
+rules.python.max_line_length = 88
+rules.python.sort_imports = "isort"
+rules.python.use_black_formatter = true
+rules.python.type_hints_required = true
+rules.python.docstring_style = "google"
+
+# Go
+rules.go.gofmt = true
+rules.go.receiver_names = "short"
+rules.go.comment_surrounding = "golint"
+
+# Rust
+rules.rust.rustfmt = true
+rules.rust.clippy = "warn"
+
+# ---------------------------------------------------------------------------
+# 3. TESTING REQUIREMENTS
+# ---------------------------------------------------------------------------
+[testing]
+# General
+framework = "auto-detect"
+coverage_threshold = 80
+require_tests_for_new_code = true
+test_file_pattern = "*.test.*, *.spec.*, *_test.*"
+test_location = "colocated"
+test_naming.functions = "should_expectedBehavior_when_condition"
+test_naming.files = "component_or_module.test.ext"
+
+# Unit Tests
+unit_testing.required = true
+unit_testing.scope = "single function or module"
+unit_testing.mock_external = true
+unit_testing.no_network = true
+unit_testing.no_database = true
+
+# Integration Tests
+integration_testing.required = true
+integration_testing.scope = "module boundaries"
+integration_testing.use_real_deps = false
+
+# E2E Tests
+e2e_testing.required = false
+e2e_testing.scope = "critical user paths"
+e2e_testing.tool = "playwright"
+
+# Specific Frameworks
+testing.jest.use = true
+testing.jest.options = ["--coverage", "--verbose"]
+testing.pytest.use = true
+testing.pytest.options = ["-v", "--tb=short", "--strict-markers"]
+testing.go_test.use = true
+testing.cargo_test.use = true
+
+# AAA Pattern
+testing.aaa_pattern = true
+testing.arrange_label = "Arrange"
+testing.act_label = "Act"
+testing.assert_label = "Assert"
+
+# ---------------------------------------------------------------------------
+# 4. ARCHITECTURE & DESIGN
+# ---------------------------------------------------------------------------
+[architecture]
+# Patterns
+design_patterns = ["dependency_injection", "repository", "factory",
+                    "strategy", "observer", "singleton_limited"]
+pattern_guidance = "Prefer composition over inheritance"
+pattern_guidance += " | Single Responsibility Principle"
+pattern_guidance += " | Open/Closed Principle"
+pattern_guidance += " | Interface Segregation Principle"
+pattern_guidance += " | Dependency Inversion Principle"
+
+# Layering
+layering.presentation = "controllers, routes, views, middleware"
+layering.application = "use_cases, services, commands, queries"
+layering.domain = "entities, value_objects, aggregates, domain_events"
+layering.infrastructure = "repositories, persistence, external_apis, messaging"
+
+# Dependency Rules
+dependency.presentation_to = ["application"]
+dependency.application_to = ["domain"]
+dependency.domain_to = []  # domain depends on nothing
+dependency.infrastructure_to = ["domain", "application"]
+dependency.cycle_detection = "error"
+
+# Module Design
+module.max_lines = 500
+module.max_exports = 10
+module.prefer_small_modules = true
+module.single_responsibility = true
+
+# API Design
+api.restful_conventions = true
+api.versioning = "semantic"
+api.error_responses_standardized = true
+api.pagination = "cursor-based"
+api.request_validation = "always"
+api.response_envelopes = true
+
+# ---------------------------------------------------------------------------
+# 5. SECURITY
+# ---------------------------------------------------------------------------
+[security]
+# General
+scan_dependencies = true
+no_secrets_in_code = "error"
+secret_detection_patterns = [
+    "API_KEY",
+    "SECRET",
+    "PASSWORD",
+    "TOKEN",
+    "PRIVATE_KEY",
+    "PASSWD",
+    "CREDENTIALS",
+    "-----BEGIN RSA PRIVATE KEY-----",
+    "-----BEGIN OPENSSH PRIVATE KEY-----",
+    "-----BEGIN DSA PRIVATE KEY-----",
+    "-----BEGIN EC PRIVATE KEY-----",
+]
+
+# Input Validation
+validation.sanitize_all_inputs = true
+validation.parameterized_queries = true
+validation.escape_output = true
+validation.file_path_traversal_check = true
+
+# Authentication
+auth.jwt_required_for_api = true
+auth.password_hashing = "bcrypt"
+auth.session_management = "secure"
+auth.mfa_recommended = true
+
+# Authorization
+authz.principle = "least_privilege"
+authz.check_at_every_layer = true
+authz.rbac_or_abac = "prefer_rbac"
+
+# Data Protection
+data.encryption_at_rest = true
+data.encryption_in_transit = "TLS 1.3"
+data.pii_must_be_masked = true
+data.no_log_sensitive_info = true
+data.backup_frequency = "daily"
+
+# Web Security
+web.csp_enabled = true
+web.xss_protection = true
+web.csrf_tokens = true
+web.cors_restricted = true
+web.hsts_enabled = true
+web.no_inline_scripts = true
+web.samesite_cookies = "lax"
+
+# Dependency Security
+deps.audit_frequency = "weekly"
+deps.allowed_licenses = ["MIT", "Apache-2.0", "BSD-2", "BSD-3", "ISC"]
+deps.blocked_licenses = ["GPL-3.0", "AGPL-3.0", "BUSL-1.1"]
+deps.vulnerability_severity_threshold = "high"
+
+# ---------------------------------------------------------------------------
+# 6. ERROR HANDLING & LOGGING
+# ---------------------------------------------------------------------------
+[errors]
+# Error Handling
+error_handling.pattern = "either monad or try-catch"
+error_handling.no_swallowed_errors = true
+error_handling.no_bare_exceptions = true
+error_handling.custom_exceptions_preferred = true
+error_handling.error_types_by_layer = true
+error_handling.always_propagate_context = true
+
+# Logging
+logging.level = "info"
+logging.structured = true
+logging.format = "json"
+logging.include_timestamp = true
+logging.include_request_id = true
+logging.include_correlation_id = true
+logging.destination = "stdout"
+logging.production_level = "warn"
+logging.development_level = "debug"
+logging.framework = "project-specific"
+
+# ---------------------------------------------------------------------------
+# 7. COMMENTS & DOCUMENTATION
+# ---------------------------------------------------------------------------
+[documentation]
+# Code Comments
+comments.require_for_public_apis = true
+comments.require_for_complex_logic = true
+comments.no_checkin_commented_code = true
+comments.todo_format = "TODO(username): message"
+comments.fixme_format = "FIXME(username): message"
+comments.require_license_header = true
+
+# Documentation Standards
+docs.api = "OpenAPI 3.1"
+docs.code = "inline where needed"
+docs.architecture = "ADR in docs/adr/"
+docs.readme_required = true
+docs.changelog_required = true
+docs.contributing_required = true
+
+# ---------------------------------------------------------------------------
+# 8. GIT & VERSION CONTROL
+# ---------------------------------------------------------------------------
+[git]
+commit.convention = "conventional_commits"
+commit.format = "type(scope): description"
+commit.types = ["feat", "fix", "docs", "style", "refactor",
+                "perf", "test", "build", "ci", "chore", "revert"]
+commit.max_subject_length = 72
+commit.max_body_width = 72
+commit.sign_commits = true
+
+branching.strategy = "trunk-based"
+branching.naming = "type/description"
+branching.protected_branches = ["main", "master", "develop"]
+branching.require_reviews = true
+branching.require_ci_pass = true
+branching.squash_merge = true
+
+# ---------------------------------------------------------------------------
+# 9. CI/CD & DEVOPS
+# ---------------------------------------------------------------------------
+[devops]
+ci.platform = "github_actions"
+ci.run_on = ["push", "pull_request"]
+ci.parallel_jobs = true
+ci.cache_dependencies = true
+
+ci.steps = [
+    "lint",
+    "typecheck",
+    "unit_test",
+    "integration_test",
+    "build",
+    "security_scan",
+    "coverage_report",
+]
+
+cd.deploy_strategy = "blue-green"
+cd.auto_deploy_to_staging = true
+cd.manual_gate_to_production = true
+cd.rollback_on_failure = true
+cd.health_check_required = true
+
+containerization.dockerfile_required = true
+containerization.multi_stage_builds = true
+containerization.small_base_images = true
+containerization.no_root_user = true
+
+# ---------------------------------------------------------------------------
+# 10. DATABASE & DATA
+# ---------------------------------------------------------------------------
+[database]
+migrations.required = true
+migrations.naming = "YYYYMMDD_description"
+migrations.reversible = true
+migrations.atomic = true
+
+queries.parameterized = true
+queries.no_n_plus_1 = true
+queries.pagination_required = true
+queries.select_columns_explicit = true
+
+schema.naming_tables = "snake_case"
+schema.naming_columns = "snake_case"
+schema.naming_indexes = "idx_table_column"
+schema.naming_foreign_keys = "fk_table_ref_table"
+schema.plural_table_names = true
+schema.id_field = "uuid"
+schema.timestamps_required = true
+schema.soft_delete_preferred = true
+
+# ---------------------------------------------------------------------------
+# 11. PERFORMANCE
+# ---------------------------------------------------------------------------
+[performance]
+caching.strategy = "multi-level"
+caching.use_redis = true
+caching.ttl_default_seconds = 300
+
+optimization.lazy_loading = true
+optimization.code_splitting = true
+optimization.tree_shaking = true
+optimization.bundle_compression = true
+optimization.image_optimization = true
+optimization.limit_http_roundtrips = true
+optimization.use_connection_pooling = true
+
+monitoring.alert_on_p99_latency_ms = 500
+monitoring.alert_on_error_rate_percent = 1
+monitoring.alert_on_cpu_usage_percent = 80
+monitoring.alert_on_memory_usage_percent = 85
+
+# ---------------------------------------------------------------------------
+# 12. ACCESSIBILITY & INTERNATIONALIZATION
+# ---------------------------------------------------------------------------
+[a11y]
+standards = "WCAG 2.1 AA"
+semantic_html = true
+aria_labels_required = true
+keyboard_navigation = true
+color_contrast_ratio = 4.5
+screen_reader_support = true
+focus_indicators = true
+
+[i18n]
+default_locale = "en"
+translation_files = "locales/*.json"
+date_format = "ISO 8601"
+timezone = "UTC"
+number_format = "locale-aware"
+rtl_support = false
+string_externalization = true
+
+# ---------------------------------------------------------------------------
+# 13. AI BEHAVIOR
+# ---------------------------------------------------------------------------
+[ai]
+# How Windsurf AI should behave
+persona = "expert_developer"
+tone = "professional_concise"
+explanation_level = "balanced"
+
+suggestions.context_size = "full_file"
+suggestions.prefer_dry = true
+suggestions.suggest_tests = true
+suggestions.suggest_refactoring = true
+suggestions.suggest_security_fixes = true
+suggestions.prefer_simple_solutions = true
+
+generation.include_types = true
+generation.include_validation = true
+generation.include_error_handling = true
+generation.mark_complex_areas = true
