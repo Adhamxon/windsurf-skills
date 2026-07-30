@@ -1,71 +1,50 @@
 # Rules Reference
 
-This document describes every section and option available in `.windsurfrules`.
+This document describes the structure of the `.windsurfrules` file — a **309 KB** ruleset covering all **384 skills** from the OpenCode collection.
 
-## Table of Contents
+## File Structure
 
-1. [Project Overview](#1-project-overview)
-2. [Code Style & Formatting](#2-code-style--formatting)
-3. [Testing Requirements](#3-testing-requirements)
-4. [Architecture & Design](#4-architecture--design)
-5. [Security](#5-security)
-6. [Error Handling & Logging](#6-error-handling--logging)
-7. [Comments & Documentation](#7-comments--documentation)
-8. [Git & Version Control](#8-git--version-control)
-9. [CI/CD & DevOps](#9-cicd--devops)
-10. [Database & Data](#10-database--data)
-11. [Performance](#11-performance)
-12. [Accessibility & Internationalization](#12-accessibility--internationalization)
-13. [AI Behavior](#13-ai-behavior)
+The `.windsurfrules` file uses an INI-like format with sections:
 
-## 1. Project Overview
+```ini
+[project]
+name = "universal-dev-skills"
+version = "3.0.0"
 
-Metadata about the project. Sets the project name, description, and version.
+[skill.clean-architecture]
+description = "Structure software around the Dependency Rule..."
+enabled = true
+instructions = """..."""
 
-## 2. Code Style & Formatting
+[skill.domain-driven-design]
+description = "Model complex domains using ubiquitous language..."
+enabled = true
+instructions = """..."""
+```
 
-Controls indentation, naming conventions, import ordering, and language-specific formatting rules for JavaScript, TypeScript, Python, Go, Rust, and others.
+## Domain Categories
 
-## 3. Testing Requirements
+The 384 skills are organized into 13 domains within the file:
 
-Defines testing frameworks, coverage thresholds, test naming conventions, and the AAA (Arrange-Act-Assert) pattern requirements.
+| Domain | Section Prefix | Count |
+|--------|---------------|-------|
+| Architecture & Design | `[skill.clean-architecture` ... `skill.ux-heuristics]` | ~30 |
+| Frontend Development | `[skill.threejs-fundamentals` ... `skill.frontend-ui-engineering]` | ~25 |
+| Backend & API | `[skill.api-design` ... `skill.message-queues]` | ~12 |
+| Mobile & iOS | `[skill.swift-concurrency` ... `skill.macos-spm-app-packaging]` | ~11 |
+| Project Management | `[skill.brainstorm-okrs` ... `skill.value-proposition]` | ~65 |
+| DevOps & Cloud | `[skill.gcp-cloud-run` ... `skill.turborepo-caching]` | ~25 |
+| Security & Testing | `[skill.security-review` ... `skill.web-security-testing]` | ~55 |
+| Code Quality | `[skill.matt-code-review` ... `skill.matt-domain-modeling]` | ~22 |
+| AI & LLM | `[skill.claude-api` ... `skill.verification-before-completion]` | ~28 |
+| Documentation & Design | `[skill.docx` ... `skill.algorithmic-art]` | ~14 |
+| Git & Workflow | `[skill.git-workflow` ... `skill.review-and-simplify-changes]` | ~15 |
+| Browser & Debugging | `[skill.playwright` ... `skill.browser-testing-with-devtools]` | ~8 |
+| Developer Productivity | `[skill.obsidian-bases` ... `skill.handoff]` | ~20 |
 
-## 4. Architecture & Design
+## How Windsurf Uses This File
 
-Enforces SOLID principles, layering rules, dependency direction, module boundaries, and API design conventions.
-
-## 5. Security
-
-Secret detection patterns, input validation requirements, authentication/authorization standards, data protection rules, web security headers, and dependency license policies.
-
-## 6. Error Handling & Logging
-
-Error handling patterns (either monad vs try-catch), structured logging format, and environment-specific log levels.
-
-## 7. Comments & Documentation
-
-Rules for code comments, TODO/FIXME formats, API documentation standards, and required project documentation files.
-
-## 8. Git & Version Control
-
-Conventional commits specification, branching strategy, branch naming, and PR requirements.
-
-## 9. CI/CD & DevOps
-
-CI pipeline configuration, deployment strategy, containerization standards, and infrastructure requirements.
-
-## 10. Database & Data
-
-Migration naming and structure, query best practices, schema naming conventions, and data modeling standards.
-
-## 11. Performance
-
-Caching strategy, optimization techniques, and monitoring thresholds for latency and error rates.
-
-## 12. Accessibility & Internationalization
-
-WCAG compliance standards, i18n configuration, locale handling, and RTL support.
-
-## 13. AI Behavior
-
-Configures Windsurf AI's persona, tone, suggestion behavior, and code generation defaults.
+Windsurf loads `.windsurfrules` from the project root and applies it to:
+- **Cascade** (AI chat panel) — Reads rules as persistent context before generating any code
+- **Supercomplete** (inline autocomplete) — Respects style rules for suggestions
+- **Flow mode** (autonomous agent) — Follows rules when executing multi-step tasks
