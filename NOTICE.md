@@ -1,40 +1,75 @@
 # Attribution Notice
 
-## If You Use This Project As-Is (as Windsurf skills)
+## Using This Project As-Is
 
-If you clone, fork, or copy this repository and use it as your own project (e.g., publish it as your own skill collection), you **must**:
+If you clone, fork, or copy this repository and use it as your own project (e.g., publish it as your own Windsurf rules collection), you **must**:
 
 1. Keep the original copyright notice in your `LICENSE` file
-2. Add a visible comment or reference in your project's `README.md` crediting the original source:
+2. Add a visible reference in your project's `README.md` crediting the original source:
    ```
-   Based on: https://github.com/Adhamxon/opencode-ultimate-skills
-   Copyright (c) 2026 Adkhamkhon
+   Based on: https://github.com/Adhamxon/windsurf-skills
+   Copyright (c) 2026 Adkhamkhon — MIT License
+   Source: https://github.com/Adhamxon/opencode-ultimate-skills
    ```
 
-## If You Use Individual .windsurfrules In Your Own Project
+## Using Individual Files
 
-If you take `.windsurfrules` from this collection and include them in your own project, you **must**:
+If you take `.windsurfrules` from this collection and include them in your own project, you **must** add the following comment at the beginning of the rules file:
 
-1. Add the following comment at the beginning of the rules file:
-   ```
-   # Source: https://github.com/Adhamxon/opencode-ultimate-skills
-   # Copyright (c) 2026 Adkhamkhon
-   # Used under MIT License
-   ```
-2. This comment must remain visible even after any modifications
+```
+# Source: https://github.com/Adhamxon/opencode-ultimate-skills
+# Copyright (c) 2026 Adkhamkhon
+# Used under MIT License
+```
 
-## If You Modify And Redistribute
+This comment must remain visible even after modifications.
 
-If you modify, extend, or build upon this project (derivative work), you **must**:
+## Derivative Works
+
+If you modify, extend, or build upon this project, you **must**:
 
 1. Include the original copyright notice in your `LICENSE` file
 2. Add a notice in your `README.md`:
-   ```
+   ```markdown
    This project is based on opencode-ultimate-skills (https://github.com/Adhamxon/opencode-ultimate-skills)
    by Adkhamkhon. Licensed under MIT.
    ```
-3. Do not misrepresent the original work as your own
+3. Not misrepresent the original work as your own
+
+## What Requires No Attribution
+
+Under the MIT License, the following uses **do not** require attribution:
+
+- Using `.windsurfrules` in your personal Windsurf workflow
+- Referencing ideas or concepts learned from this collection
+- Linking to this repository from your own projects
+
+## Third-Party Credits
+
+This collection incorporates skills and patterns from the following sources. Each retains its original licensing:
+
+| Source | Content | License |
+|--------|---------|---------|
+| Anthropic | Official Claude/MCP skills collection | MIT |
+| Matt Pocock | Engineering workflow skills (code-review, TDD, etc.) | MIT |
+| Addy Osmani | Agent development skills (spec-driven-dev, etc.) | Apache 2.0 |
+| Google Cloud | Cloud platform skills (GCP services) | Apache 2.0 |
+| HuggingFace | ML/AI training skills (TRL, Transformers) | Apache 2.0 |
+| Awesome GitHub Copilot | Community Copilot skills collection | MIT |
+| Wondelai | Book-based skills (37signals, Lean Startup, etc.) | MIT |
+
+## Original Source
+
+This project is a Windsurf IDE adaptation of **[opencode-ultimate-skills](https://github.com/Adhamxon/opencode-ultimate-skills)** by Adkhamkhon.
+
+## Contact
+
+- **Author**: Adkhamkhon
+- **Repository**: https://github.com/Adhamxon/windsurf-skills
+- **Issues**: https://github.com/Adhamxon/windsurf-skills/issues
 
 ## License
 
 This project is licensed under the MIT License — see [LICENSE](LICENSE) for full terms.
+
+Copyright (c) 2026 Adkhamkhon. All rights reserved.
