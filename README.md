@@ -1,6 +1,8 @@
 # Windsurf AI Skills — `.windsurfrules` for Windsurf IDE
 
-A production-grade `.windsurfrules` collection purpose-built for **Windsurf IDE** — the AI-native editor by Codeium. These rules shape how Windsurf's AI understands your project, writes code, and collaborates with you across every session.
+A **massive** `.windsurfrules` collection (**309 KB, 384 skills converted**) purpose-built for **Windsurf IDE** — the AI-native editor by Codeium. These rules shape how Windsurf's AI understands your project, writes code, and collaborates with you across every session.
+
+This is the largest open-source Windsurf rules configuration, auto-converted from the [opencode-ultimate-skills](https://github.com/Adhamxon/opencode-ultimate-skills) project.
 
 ## How Windsurf Uses `.windsurfrules`
 
@@ -16,7 +18,7 @@ Unlike passing instructions in a prompt, `.windsurfrules` is always active. Rest
 
 ## What's Inside
 
-- `.windsurfrules` — 400+ line comprehensive rules file (code style, testing, architecture, security, error handling, git, CI/CD, database, performance, accessibility, i18n, AI behavior)
+- `.windsurfrules` — **309 KB** comprehensive rules file covering **all 384 skills** across 13 domains (architecture, frontend, backend, mobile, project management, DevOps, security, code quality, AI/LLM, documentation, git, productivity, browser/debugging)
 - `WINDSURF_CASCADE_GUIDE.md` — Master Cascade chat with these rules
 - `docs/GETTING_STARTED.md` — Quick setup
 - `docs/RULES_REFERENCE.md` — Full rule reference
